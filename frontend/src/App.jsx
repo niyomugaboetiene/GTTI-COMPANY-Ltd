@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 
-import Login from "./pages/Login";
+// import Login from "./pages/Login";
 
 import AddFood from "./pages/AddFood";
 import FoodList from "./pages/FoodList";
@@ -36,7 +36,7 @@ function App() {
 
         <Routes>
 
-          <Route path="/" element={<Login />} />
+          {/* <Route path="/" element={<Login />} /> */}
 
           <Route path="/add-food" element={<AddFood />} />
           <Route path="/food-list" element={<FoodList />} />
