@@ -7,10 +7,10 @@ const Food = require("../schemas/foodSchema");
 router.post("/add", async (req, res) => {
 
     try {
-//     foodId, exportDate,  quantity
-        const { foodId, exportsData, quantity } = req.body;
+//         foodName  foodOwnerName
+        const { foodName, foodOwnerName } = req.body;
 
-        if (!foodId || !exportsData || !quantity) {
+        if (!foodName || !foodOwnerName) {
             return res.status(404).json({ message: 'Fill out some missing fields' });
         }
 
