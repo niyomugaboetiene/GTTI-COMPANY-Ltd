@@ -51,7 +51,7 @@ function UpdateImport() {
           );
 
         alert("Import Updated");
-        navigate("/import");
+        navigate("/import-list");
         }  catch (err) {
             console.error(err);
             const status = err.response?.status;

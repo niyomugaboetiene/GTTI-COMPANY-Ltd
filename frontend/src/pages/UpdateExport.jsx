@@ -59,7 +59,7 @@ const getExport = async () => {
         );
 
         alert("Export Updated");
-        navigate("/export");
+        navigate("/export-lis");
 
         }  catch (err) {
             console.error(err);
