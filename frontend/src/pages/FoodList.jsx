@@ -1,9 +1,11 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function FoodList() {
 
     const [foods, setFoods] = useState([]);
+    const navigate = useNavigate();
 
     const getFoods = async () => {
         const res = await axios.get("http://localhost:5000/foods");
@@ -58,15 +60,21 @@ function FoodList() {
 
                                 <td className="border p-3 flex justify-center gap-2">
 
-                                    <button
-                                        onClick={() => deleteFood(food._id)}
-                                        className="bg-red-500 hover:bg-red-600 text-white px-4 py-1 rounded-full transition"
-                                    >
-                                        Delete
-                                    </button>
+    <button
+        onClick={() => navigate(`/food/update/${food._id}`)}
+        className="bg-yellow-400 hover:bg-yellow-500 text-white px-4 py-1 rounded-full"
+    >
+        Update
+    </button>
 
-                                </td>
+    <button
+        onClick={() => deleteFood(food._id)}
+        className="bg-red-500 hover:bg-red-600 text-white px-4 py-1 rounded-full"
+    >
+        Delete
+    </button>
 
+</td>
                             </tr>
 
                         ))}
