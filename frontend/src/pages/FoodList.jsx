@@ -3,13 +3,23 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function FoodList() {
-
+    const [isAuth, setIsAuth] = useState(true);
+    
     const [foods, setFoods] = useState([]);
     const navigate = useNavigate();
 
     const getFoods = async () => {
-        const res = await axios.get("http://localhost:5000/foods");
-        setFoods(res.data.food);
+        try {
+           const res = await axios.get("http://localhost:5000/foods");
+           setFoods(res.data.food);
+        } catch (err) {
+            console.error(err);
+            const status = err.response?.status;
+            if (status === 401) {
+                setIsAuth(false);
+            }
+        }
+
     };
 
     useEffect(() => {
@@ -28,6 +38,11 @@ function FoodList() {
         } catch (err) {
             console.error(err);
             alert("Failed to delete food");
+            const status = err.response?.status;
+            if (status === 401) {
+                setIsAuth(false);
+            }
+        
         }
     };
 
