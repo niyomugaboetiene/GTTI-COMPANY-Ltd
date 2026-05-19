@@ -49,7 +49,7 @@ function ImportList() {
                                 <tr key={item._id}>
 
                                     <td className="border p-2">
-                                        {item.foodId?.foodName}
+                                        {item.foodId?.foodName || "No food name"}
                                     </td>
 
                                     <td className="border p-2">

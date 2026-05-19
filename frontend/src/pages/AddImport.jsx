@@ -31,7 +31,7 @@ function AddImport() {
         );
 
         console.log("Result", foodId, importDate, quantity);
-        alert("Export Added");
+        alert("Import Added");
         }  catch (err) {
             console.error(err);
         }

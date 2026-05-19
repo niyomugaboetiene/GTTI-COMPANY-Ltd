@@ -7,6 +7,8 @@ function AddExport() {
     const [foodId, setFoodId] = useState("");
     const [quantity, setQuantity] = useState("");
 
+    const [Error, setError] = useState("");
+
     const [foods, setFoods] = useState([]);
     // foodId, exportsData, quantity
 
@@ -33,6 +35,10 @@ function AddExport() {
         alert("Export Added");
         }  catch (err) {
             console.error(err);
+            const errorMessage = err.response?.data.message || "Error occured";
+            if (errorMessage === "You dont have this quantity in stock") {
+                alert(errorMessage);
+            }
         }
     };
 
