@@ -48,7 +48,6 @@ function AddFood() {
                     Add Food
                 </h1>
 
-                {/* Food Name */}
                 <div className="mb-4">
                     <label className="block text-lg text-blue-600 mb-1">
                         Food Name
@@ -63,7 +62,6 @@ function AddFood() {
                     />
                 </div>
 
-                {/* Owner Name */}
                 <div className="mb-4">
                     <label className="block text-lg text-blue-600 mb-1">
                         Owner Name
@@ -78,7 +76,6 @@ function AddFood() {
                     />
                 </div>
 
-                {/* Button */}
                 <button
                     type="submit"
                     className="bg-blue-500 w-full py-3 rounded-full text-white hover:bg-blue-600 transition-colors"
