@@ -36,7 +36,14 @@ function AddExport() {
 
     return (
       <div>
-           
+           <div>
+               <label htmlFor="">Food</label>
+               <select >
+                  {foods.map((food, index) => (
+                    <option value=""></option>
+                  ))}
+               </select>
+           </div>
       </div>
     )
 }
