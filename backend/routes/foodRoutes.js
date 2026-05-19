@@ -14,7 +14,7 @@ router.post("/add", async (req, res) => {
             return res.status(404).json({ message: 'Fill out some missing fields' });
         }
 
-        const newFood = await Food.create({ foodId, exportsData, quantity });
+        const newFood = await Food.create({ foodName, foodOwnerName });
 
         return res.status(201).json({ mesdage: 'New food added', food: newFood });
 
