@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Link, useNavigate } from "react-router-dom";
 
 import AddFood from "./pages/AddFood";
 import FoodList from "./pages/FoodList";
@@ -17,6 +17,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 
 function App() {
+   const navigate = useNavigate();
 
   return (
 
@@ -45,8 +46,8 @@ function App() {
         </nav>
         </div>
         <div className="flex space-x-3">
-          <button className="bg-blue-900 text-white px-4 h-8 mt-3 hover:bg-blue-800 transition-colors">Register</button>
-          <button className="bg-blue-900 text-white px-4 h-8 mt-3 hover:bg-blue-800 transition-colors">Login</button>
+          <button className="bg-blue-900 text-white px-4 h-8 mt-3 hover:bg-blue-800 transition-colors" onClick={() => navigate('/register')}>Register</button>
+          <button className="bg-blue-900 text-white px-4 h-8 mt-3 hover:bg-blue-800 transition-colors" onClick={() => navigate('/login')}>Login</button>
         </div>
      </div>
 
