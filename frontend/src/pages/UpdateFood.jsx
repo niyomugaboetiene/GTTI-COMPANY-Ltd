@@ -6,6 +6,7 @@ function UpdateFood() {
 
     const { id } = useParams();
     const navigate = useNavigate();
+    const [isAuth, setIsAuth] = useState(true);
 
     const [formData, setFormData] = useState({
         foodName: "",

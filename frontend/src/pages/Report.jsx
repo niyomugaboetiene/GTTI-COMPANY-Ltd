@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 function Report() {
     const [exportsData, setExportsData] = useState([]);
     const [imports, setImports] = useState([]);
+    const [isAuth, setIsAuth] = useState(true);
 
     const getExports = async () => {
         try {

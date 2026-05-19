@@ -10,6 +10,7 @@ function UpdateImport() {
     const [foodId, setFoodId] = useState("");
     const [importDate, setImportDate] = useState("");
     const [quantity, setQuantity] = useState("");
+    const [isAuth, setIsAuth] = useState(true);
 
     const [foods, setFoods] = useState([]);
 
@@ -66,7 +67,7 @@ function UpdateImport() {
             <div className="min-h-screen bg-gray-100 flex justify-center items-center">
                <div className="bg-sky-200 h-30 p-3 rounded-xl">
                   <h1 className="text-center mt-2">Please login to access this page.</h1>
-                  <button onClick={() => navigate('/login')} className="bg-blue-500 px-6 py-2 mt-4 text-white font-bold rounded-lg hover:bg-blue-600 transition-colors">Login</button>
+                  <button onClick={() => navigate('/login')} className="bg-blue-500 px-6 py-2 mt-4 ms-4 text-white font-bold rounded-lg hover:bg-blue-600 transition-colors">Login</button>
                </div>
             </div>
         )

@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 function ImportList() {
 
     const [imports, setImports] = useState([]);
+    const [isAuth, setIsAuth] = useState(true);
 
     const getImports = async () => {
         try {

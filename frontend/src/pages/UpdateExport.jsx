@@ -10,6 +10,7 @@ function UpdateExport() {
     const [foodId, setFoodId] = useState("");
     const [exportDate, setExportDate] = useState("");
     const [quantity, setQuantity] = useState("");
+    const [isAuth, setIsAuth] = useState(true);
 
     const [foods, setFoods] = useState([]);
 

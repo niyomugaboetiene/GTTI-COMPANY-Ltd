@@ -14,8 +14,17 @@ function AddImport() {
     const navigate = useNavigate();
     
     const getFoods = async () => {
-        const res = await axios.get("http://localhost:5000/foods");
-        setFoods(res.data.food);
+        try {
+          const res = await axios.get("http://localhost:5000/foods");
+          setFoods(res.data.food);
+         } catch (err) {
+            console.error(err);
+            const status = err.response?.status;
+            if (status === 401) {
+                setIsAuth(false);
+            }
+        }
+
     };
 
     useEffect(() => {
