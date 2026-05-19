@@ -19,7 +19,7 @@ router.post("/add", async (req, res) => {
 
     } catch (error) {
         console.error(err);
-        return res.status(500).jsone({ message: 'Internal server error' });
+        return res.status(500).json({ message: 'Internal server error' });
     }
 
 });
@@ -28,7 +28,10 @@ router.get("/", async (req, res) => {
    try {
         const exportsData = await Export.find().populate("foodId");
 
-        return res.status(200).jsone({ messsage: 'Export list', export: exportData });
+        return res.status(200).json({ messsage: 'Export list', export: exportData });
+   } catch (err) {
+    console.error(err);
+     return res.status(500).jsone({ message: 'Internal server error' });
    }
 });
 
