@@ -26,10 +26,14 @@ router.post("/add", async (req, res) => {
 });
 
 router.get("/", async (req, res) => {
+   try {
+        const foodData = await Food.find();
 
-    const foods = await Food.find();
-
-    res.json(foods);
+        return res.status(200).json({ messsage: 'Food list', food: foodData });
+   } catch (err) {
+    console.error(err);
+     return res.status(500).jsone({ message: 'Internal server error' });
+   }
 });
 
 router.put("/update/:id", async (req, res) => {
