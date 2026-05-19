@@ -25,9 +25,9 @@ router.post("/register", async (req, res) => {
 
 router.get("/", async (req, res) => {
    try {
-        const importData = await Import.find().populate("foodId");
+        const managerData = await Manager.find();
 
-        return res.status(200).json({ messsage: 'Import list', import: importData });
+        return res.status(200).json({ messsage: 'Manager list', manager: managerData });
    } catch (err) {
     console.error(err);
      return res.status(500).json({ message: 'Internal server error' });
