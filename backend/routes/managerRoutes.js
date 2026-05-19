@@ -25,7 +25,13 @@ router.post("/register", async (req, res) => {
 
 router.post('/login', async (req, res) => {
     try {
-        
+        const { userName, password } = req.body;
+
+        if (!userName || !password) {
+            return res.status(404).json({ message: 'Fill out some missing fields' });
+        }
+
+        const isUsernameExist
     }
 })
 
