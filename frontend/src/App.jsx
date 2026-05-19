@@ -11,6 +11,7 @@ import AddExport from "./pages/AddExport";
 import ExportList from "./pages/ExportList";
 import UpdateExport from "./pages/UpdateExport";
 import UpdateFood from "./pages/UpdateFood";
+import Report from "./pages/Report";
 
 function App() {
 
@@ -32,6 +33,7 @@ function App() {
 
           <Link to="/add-export">Add Export</Link>
           <Link to="/export-list">Export List</Link>
+          <Link to="/report">Report</Link>
 
         </nav>
 
@@ -39,6 +41,7 @@ function App() {
 
           <Route path="/add-food" element={<AddFood />} />
           <Route path="/food-list" element={<FoodList />} />
+          <Route path="/report" element={<Report />} />
 
           <Route path="/add-import" element={<AddImport />} />
           <Route path="/import-list" element={<ImportList />} />
