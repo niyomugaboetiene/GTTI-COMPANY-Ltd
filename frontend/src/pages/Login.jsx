@@ -18,8 +18,6 @@ function Login() {
                 { userName, password }
             );
 
-            alert("Import Added");
-
             // reset fields
             setUserName("");
             setPassword("");

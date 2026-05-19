@@ -16,9 +16,6 @@ function Register() {
                 "http://localhost:5000/manager/register",
                 { userName, password }
             );
-
-            alert("Import Added");
-
             // reset fields
             setUserName("");
             setPassword("");
