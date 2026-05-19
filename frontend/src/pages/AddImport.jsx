@@ -27,10 +27,10 @@ function AddImport() {
        e.preventDefault();
         try {
         await axios.post(
-            "http://localhost:5000/import/add", { foodId, exportDate, quantity }
+            "http://localhost:5000/import/add", { foodId, importDate, quantity }
         );
 
-        console.log("Result", foodId, exportDate, quantity);
+        console.log("Result", foodId, importDate, quantity);
         alert("Export Added");
         }  catch (err) {
             console.error(err);
@@ -42,6 +42,7 @@ function AddImport() {
            <div>
                <label htmlFor="">Food</label>
                <select onChange={(e) => setFoodId(e.target.value)}>
+                <option>---Select food---</option>
                   {foods.map((food, index) => (
                     <option value={food._id} key={index}>{food.foodName}</option>
                   ))}
