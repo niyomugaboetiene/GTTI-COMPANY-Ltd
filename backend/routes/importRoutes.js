@@ -26,12 +26,12 @@ router.post("/add", async (req, res) => {
 
 router.get("/", async (req, res) => {
    try {
-        const exportsData = await Export.find().populate("foodId");
+        const importData = await Export.find().populate("foodId");
 
-        return res.status(200).json({ messsage: 'Export list', export: exportsData });
+        return res.status(200).json({ messsage: 'Import list', import: importData });
    } catch (err) {
     console.error(err);
-     return res.status(500).jsone({ message: 'Internal server error' });
+     return res.status(500).json({ message: 'Internal server error' });
    }
 });
 
