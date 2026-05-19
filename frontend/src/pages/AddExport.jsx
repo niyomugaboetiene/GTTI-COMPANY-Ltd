@@ -6,6 +6,8 @@ function AddExport() {
     const [exportDate, setExportDate] = useState("");
     const [foodId, setFoodId] = useState("");
     const [quantity, setQuantity] = useState("");
+
+    const [foods, setFoods] = useState([]);
     // foodId, exportsData, quantity
 
     const getFoods = async () => {
@@ -14,7 +16,7 @@ function AddExport() {
             "http://localhost:5000/foods"
         );
 
-        setFoods(res.data);
+        setFoods(res.data.food);
     };
 
     useEffect(() => {
