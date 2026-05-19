@@ -40,7 +40,7 @@ function AddExport() {
                <label htmlFor="">Food</label>
                <select >
                   {foods.map((food, index) => (
-                    <option value=""></option>
+                    <option value={food._id} key={index}>{food.foodName}</option>
                   ))}
                </select>
            </div>
