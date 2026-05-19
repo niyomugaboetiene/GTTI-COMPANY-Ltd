@@ -53,6 +53,7 @@ function App() {
           <Route path="/add-food" element={<AddFood />} />
           <Route path="/food-list" element={<FoodList />} />
           <Route path="/report" element={<Report />} />
+          <Route path="/" element={<Report />} />
 
           <Route path="/add-import" element={<AddImport />} />
           <Route path="/import-list" element={<ImportList />} />
