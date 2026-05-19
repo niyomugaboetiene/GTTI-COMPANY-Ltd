@@ -21,7 +21,9 @@ function App() {
 
       <div className="min-h-screen bg-gray-100">
 
-        <nav className="bg-blue-600 text-white p-4 flex gap-4 flex-wrap">
+     <div className="flex justify-between bg-blue-600 space-x-5 flex-wrap">
+      <div>
+        <nav className=" text-white p-4 flex ">
 
           <Link to="/">Home</Link>
 
@@ -34,8 +36,14 @@ function App() {
           <Link to="/add-export">Add Export</Link>
           <Link to="/export-list">Export List</Link>
           <Link to="/report">Report</Link>
-
         </nav>
+        </div>
+        <div>
+          <button>Register</button>
+          <button>Login</button>
+        </div>
+     </div>
+
 
         <Routes>
 
