@@ -8,10 +8,10 @@ function ExportList() {
     const getExports = async () => {
 
         const res = await axios.get(
-            "http://localhost:5000/exports"
+            "http://localhost:5000/export"
         );
 
-        setExportsData(res.data);
+        setExportsData(res.data.export);
     };
 
     useEffect(() => {

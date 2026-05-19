@@ -8,7 +8,7 @@ function ImportList() {
     const getImports = async () => {
 
         const res = await axios.get(
-            "http://localhost:5000/imports"
+            "http://localhost:5000/import"
         );
 
         setImports(res.data);
