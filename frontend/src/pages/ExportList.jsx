@@ -59,7 +59,7 @@ function ExportList() {
 
                                     <button
                                         className="bg-yellow-400 hover:bg-yellow-500 text-white px-3 py-1 rounded-full transition"
-                                        onClick={() => alert("Update feature coming soon")}
+                                        onClick={() => window.location.href = `/export/update/${item._id}`}
                                     >
                                         Update
                                     </button>
