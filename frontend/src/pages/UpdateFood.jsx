@@ -16,9 +16,13 @@ function UpdateFood() {
         try {
             const res = await axios.get(`http://localhost:5000/foods/get/${id}`);
             setFormData(res.data.food);
-        } catch (err) {
+        }    catch (err) {
             console.error(err);
-        }
+            const status = err.response?.status;
+            if (status === 401) {
+                setIsAuth(false);
+            }
+    }
     };
 
     useEffect(() => {
@@ -35,13 +39,21 @@ function UpdateFood() {
     const handleUpdate = async (e) => {
         e.preventDefault();
 
-        await axios.put(
+        try { 
+          await axios.put(
             `http://localhost:5000/foods/update/${id}`,
             formData
         );
 
         alert("Food updated successfully");
         navigate("/food-list");
+        }   catch (err) {
+            console.error(err);
+            const status = err.response?.status;
+            if (status === 401) {
+                setIsAuth(false);
+            }
+    }
     };
 
    if (!isAuth) {

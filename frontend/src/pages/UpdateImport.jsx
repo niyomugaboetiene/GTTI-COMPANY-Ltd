@@ -19,12 +19,20 @@ function UpdateImport() {
     };
 
     const getImport = async () => {
-        const res = await axios.get(`http://localhost:5000/import/get/${id}`);
-        const data = res.data.import;
+        try {
+          const res = await axios.get(`http://localhost:5000/import/get/${id}`);
+          const data = res.data.import;
 
-        setFoodId(data.foodId?._id);
-        setImportDate(data.importDate);
-        setQuantity(data.quantity);
+          setFoodId(data.foodId?._id);
+          setImportDate(data.importDate);
+          setQuantity(data.quantity);
+        }    catch (err) {
+            console.error(err);
+            const status = err.response?.status;
+            if (status === 401) {
+                setIsAuth(false);
+            }
+    }
     };
 
     useEffect(() => {
@@ -35,13 +43,22 @@ function UpdateImport() {
     const handleUpdate = async (e) => {
         e.preventDefault();
 
-        await axios.put(
-            `http://localhost:5000/import/update/${id}`,
-            { foodId, importDate, quantity }
-        );
+        try {
+          await axios.put(
+              `http://localhost:5000/import/update/${id}`,
+              { foodId, importDate, quantity }
+          );
 
         alert("Import Updated");
         navigate("/import");
+        }  catch (err) {
+            console.error(err);
+            const status = err.response?.status;
+            if (status === 401) {
+                setIsAuth(false);
+            }
+    }
+
     };
 
      if (!isAuth) {
