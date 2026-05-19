@@ -48,6 +48,7 @@ function Register() {
 
                     <input
                         type="text"
+                        placeholder="Enter Username"
                         onChange={(e) => setUserName(e.target.value)}
                         className="w-full bg-gray-200 py-3 px-4 rounded-full focus:outline focus:outline-blue-500"
                     />
@@ -60,7 +61,7 @@ function Register() {
 
                     <input
                         type="password"
-                        value={quantity}
+                        placeholder="Enter password"
                         onChange={(e) => setPassword(e.target.value)}
                         className="w-full bg-gray-200 py-3 px-4 rounded-full focus:outline focus:outline-blue-500"
                     />
