@@ -42,8 +42,8 @@ function App() {
         </nav>
         </div>
         <div className="flex space-x-3">
-          <button className="bg-blue-900 text-white px-4 h-8 mt-3">Register</button>
-          <button className="bg-blue-900 text-white px-4 h-8 mt-3">Login</button>
+          <button className="bg-blue-900 text-white px-4 h-8 mt-3 hover:bg-blue-800 transition-colors">Register</button>
+          <button className="bg-blue-900 text-white px-4 h-8 mt-3 hover:bg-blue-800 transition-colors">Login</button>
         </div>
      </div>
 
