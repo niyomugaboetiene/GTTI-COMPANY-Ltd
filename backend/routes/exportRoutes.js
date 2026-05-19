@@ -13,9 +13,14 @@ router.post("/add", async (req, res) => {
             return res.status(404).json({ message: 'Fill out some missing fields' });
         }
 
+        console.log("Food id", foodId);
         const isQuantityExist = await Import.findOne({ foodId: foodId });
 
         console.log(isQuantityExist);
+
+        if (!isQuantityExist) {
+            return res.status(404).json({ message: 'No product in the stock' });
+        }
 
         if (isQuantityExist.quantity < quantity) {
             return res.status(403).json({ message: `You dont have this quantity in stock` });
