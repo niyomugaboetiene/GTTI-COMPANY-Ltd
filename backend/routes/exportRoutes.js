@@ -25,7 +25,10 @@ router.post("/add", async (req, res) => {
         if (isQuantityExist.quantity < quantity) {
             return res.status(403).json({ message: `You dont have this quantity in stock` });
         }
+          
+        isQuantityExist.quantity = quantity;
         const newExport = await Export.create({ foodId, exportDate, quantity });
+
 
         return res.status(201).json({ mesdage: 'New export added', export: newExport });
 
