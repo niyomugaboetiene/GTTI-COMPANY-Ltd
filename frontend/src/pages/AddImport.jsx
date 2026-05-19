@@ -3,12 +3,12 @@ import { useEffect, useState } from "react";
 
 function AddImport() {
 
-    const [foods, setFoods] = useState([]);
+    const [exportDate, setExportDate] = useState("");
+    const [foodId, setFoodId] = useState("");
+    const [quantity, setQuantity] = useState("");
 
-    const [formData, setFormData] = useState({
-        foodId: "",
-        quantity: ""
-    });
+    const [foods, setFoods] = useState([]);
+    // foodId, exportsData, quantity
 
     const getFoods = async () => {
 
@@ -16,7 +16,7 @@ function AddImport() {
             "http://localhost:5000/foods"
         );
 
-        setFoods(res.data);
+        setFoods(res.data.food);
     };
 
     useEffect(() => {
@@ -24,76 +24,39 @@ function AddImport() {
     }, []);
 
     const handleSubmit = async (e) => {
-
-        e.preventDefault();
-
+       e.preventDefault();
+        try {
         await axios.post(
-            "http://localhost:5000/imports/add",
-            formData
+            "http://localhost:5000/exports/add", { foodId, exportDate, quantity }
         );
 
-        alert("Import Added");
+        console.log(foodId, exportDate, quantity);
+        alert("Export Added");
+        }  catch (err) {
+            console.error(err);
+        }
     };
 
     return (
-
-        <div className="p-6">
-
-            <form
-                onSubmit={handleSubmit}
-                className="bg-white p-5 rounded shadow"
-            >
-
-                <h1 className="text-2xl font-bold mb-4">
-                    Add Import
-                </h1>
-
-                <select
-                    className="border p-2 w-full mb-3"
-                    onChange={(e) =>
-                        setFormData({
-                            ...formData,
-                            foodId: e.target.value
-                        })
-                    }
-                >
-
-                    <option>Select Food</option>
-
-                    {
-                        foods.map((food) => (
-
-                            <option
-                                key={food._id}
-                                value={food._id}
-                            >
-                                {food.foodName}
-                            </option>
-
-                        ))
-                    }
-
-                </select>
-
-                <input
-                    type="number"
-                    placeholder="Quantity"
-                    className="border p-2 w-full mb-3"
-                    onChange={(e) =>
-                        setFormData({
-                            ...formData,
-                            quantity: e.target.value
-                        })
-                    }
-                />
-
-                <button className="bg-blue-600 text-white px-4 py-2">
-                    Save
-                </button>
-
-            </form>
-
-        </div>
+      <div>
+           <div>
+               <label htmlFor="">Food</label>
+               <select onChange={(e) => setFoodId(e.target.value)}>
+                  {foods.map((food, index) => (
+                    <option value={food._id} key={index}>{food.foodName}</option>
+                  ))}
+               </select>
+           </div>
+           <div>
+              <label htmlFor="">Date (optional)</label>
+              <input type="date" onChange={(e) => setExportDate(e.target.value)} />
+           </div>
+           <div>
+              <label htmlFor="">Quantity</label>
+              <input type="number" onChange={(e) => setQuantity(e.target.value)} />
+           </div>
+           <button onClick={handleSubmit}>Save Export</button>
+      </div>
     )
 }
 
