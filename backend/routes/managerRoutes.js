@@ -23,15 +23,10 @@ router.post("/register", async (req, res) => {
 
 });
 
-router.get("/", async (req, res) => {
-   try {
-        const managerData = await Manager.find();
-
-        return res.status(200).json({ messsage: 'Manager list', manager: managerData });
-   } catch (err) {
-    console.error(err);
-     return res.status(500).json({ message: 'Internal server error' });
-   }
-});
+router.post('/login', async (req, res) => {
+    try {
+        
+    }
+})
 
 module.exports = router;
