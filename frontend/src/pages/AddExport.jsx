@@ -24,14 +24,16 @@ function AddExport() {
     }, []);
 
     const handleSubmit = async (e) => {
-
-        e.preventDefault();
-
+       e.preventDefault();
+        try {
         await axios.post(
             "http://localhost:5000/exports/add", { foodId, exportDate, quantity }
         );
 
         alert("Export Added");
+        }  catch (err) {
+            console.error(err);
+        }
     };
 
     return (
@@ -49,9 +51,10 @@ function AddExport() {
               <input type="date" onChange={(e) => setExportDate(e.target.value)} />
            </div>
            <div>
-              <label htmlFor="">Date (optional)</label>
-              <input type="date" onChange={(e) => setExportDate(e.target.value)} />
+              <label htmlFor="">Quantity</label>
+              <input type="number" onChange={(e) => setQuantity(e.target.value)} />
            </div>
+           <button onClick={handleSubmit}>Save Export</button>
       </div>
     )
 }
