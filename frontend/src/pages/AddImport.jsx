@@ -51,7 +51,6 @@ function AddImport() {
                     Add Import
                 </h1>
 
-                {/* Food Select */}
                 <div className="mb-4">
                     <label className="block text-lg text-blue-600 mb-1">
                         Food
@@ -72,7 +71,6 @@ function AddImport() {
                     </select>
                 </div>
 
-                {/* Date */}
                 <div className="mb-4">
                     <label className="block text-lg text-blue-600 mb-1">
                         Date (optional)
@@ -86,7 +84,6 @@ function AddImport() {
                     />
                 </div>
 
-                {/* Quantity */}
                 <div className="mb-4">
                     <label className="block text-lg text-blue-600 mb-1">
                         Quantity
@@ -100,7 +97,6 @@ function AddImport() {
                     />
                 </div>
 
-                {/* Button */}
                 <button
                     type="submit"
                     className="bg-blue-500 w-full py-3 rounded-full text-white hover:bg-blue-600 transition-colors"
