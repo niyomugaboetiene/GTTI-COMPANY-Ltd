@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const bcrypt = require("bcrypt");
 
 const Manager = require("../schemas/managerSchema");
 
@@ -12,6 +13,8 @@ router.post("/register", async (req, res) => {
             return res.status(404).json({ message: 'Fill out some missing fields' });
         }
 
+        const salt = await b
+        const hashedPassword = await bcrypt.hash
         const newManager = await Manager.create({ userName, password });
 
         return res.status(201).json({ mesdage: 'New Manager added', manager: newManager });
