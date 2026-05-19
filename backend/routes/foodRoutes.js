@@ -3,8 +3,15 @@ const router = express.Router();
 
 const Food = require("../schemas/foodSchema");
 
+function isManager(req, res, next) {
+    if (!req.session.manager) {
+      return res.status(401).json({ message: 'Unauthorized' });
+    }
 
-router.post("/add", async (req, res) => {
+    next();
+}
+
+router.post("/add", isManager, async (req, res) => {
 
     try {
 //         foodName  foodOwnerName
@@ -25,7 +32,7 @@ router.post("/add", async (req, res) => {
 
 });
 
-router.get("/", async (req, res) => {
+router.get("/", isManager, async (req, res) => {
    try {
         const foodData = await Food.find();
 
@@ -36,7 +43,7 @@ router.get("/", async (req, res) => {
    }
 });
 
-router.get("/get/:id", async (req, res) => {
+router.get("/get/:id", isManager, async (req, res) => {
     try {
         const food = await Food.findById(req.params.id);
 
@@ -51,7 +58,7 @@ router.get("/get/:id", async (req, res) => {
     }
 });
 
-router.put("/update/:id", async (req, res) => {
+router.put("/update/:id", isManager, async (req, res) => {
     try {
         const { foodName, foodOwnerName } = req.body;
 
@@ -80,7 +87,7 @@ router.put("/update/:id", async (req, res) => {
     }
 });
 
-router.delete("/delete/:id", async (req, res) => {
+router.delete("/delete/:id", isManager, async (req, res) => {
     try {
         const food = await Food.findById(req.params.id);
 

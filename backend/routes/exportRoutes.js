@@ -4,7 +4,14 @@ const router = express.Router();
 const Export = require("../schemas/exportSchema");
 const Import = require("../schemas/importSchema.js");
 
-router.get("/get/:id", async (req, res) => {
+function isManager(req, res, next) {
+    if (!req.session.manager) {
+      return res.status(401).json({ message: 'Unauthorized' });
+    }
+
+    next();
+}
+router.get("/get/:id", isManager, async (req, res) => {
     try {
         const exportItem = await Export.findById(req.params.id)
             .populate("foodId");
@@ -21,7 +28,7 @@ router.get("/get/:id", async (req, res) => {
     }
 });
 
-router.post("/add", async (req, res) => {
+router.post("/add", isManager, async (req, res) => {
 
     try {
         const { foodId, exportDate, quantity } = req.body;
@@ -57,7 +64,7 @@ router.post("/add", async (req, res) => {
 
 });
 
-router.get("/", async (req, res) => {
+router.get("/", isManager, async (req, res) => {
    try {
         const exportsData = await Export.find().populate("foodId");
 
@@ -67,7 +74,7 @@ router.get("/", async (req, res) => {
      return res.status(500).jsone({ message: 'Internal server error' });
    }
 });
-router.put("/update/:id", async (req, res) => {
+router.put("/update/:id", isManager, async (req, res) => {
     try {
         const { foodId, exportDate, quantity } = req.body;
 
