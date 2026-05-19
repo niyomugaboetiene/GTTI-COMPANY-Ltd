@@ -6,24 +6,33 @@ const Import = require("../schemas/importSchema");
 router.post("/add", async (req, res) => {
 
     try {
+//     foodId, exportDate,  quantity
+        const { foodId, exportsData, quantity } = req.body;
 
-        const importedFood = new Import(req.body);
+        if (!foodId || !exportsData || !quantity) {
+            return res.status(404).json({ message: 'Fill out some missing fields' });
+        }
 
-        await importedFood.save();
+        const newExport = await Import.create({ foodId, exportsData, quantity });
 
-        res.json(importedFood);
+        return res.status(201).json({ mesdage: 'New export added', export: newExport });
 
     } catch (error) {
-        res.json(error);
+        console.error(err);
+        return res.status(500).json({ message: 'Internal server error' });
     }
 
 });
 
 router.get("/", async (req, res) => {
+   try {
+        const exportsData = await Export.find().populate("foodId");
 
-    const imports = await Import.find().populate("foodId");
-
-    res.json(imports);
+        return res.status(200).json({ messsage: 'Export list', export: exportsData });
+   } catch (err) {
+    console.error(err);
+     return res.status(500).jsone({ message: 'Internal server error' });
+   }
 });
 
 module.exports = router;
