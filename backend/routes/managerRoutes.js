@@ -34,7 +34,12 @@ router.post('/login', async (req, res) => {
             return res.status(404).json({ message: 'Fill out some missing fields' });
         }
 
-        const isUsernameExist
+        const isUsernameExist = await Manager.findOne({ userName: userName });
+
+        if (!isUsernameExist) {
+            return res.status(404).json({ message: 'Invalid username' });
+        }
+        
     }
 })
 
