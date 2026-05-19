@@ -16,9 +16,9 @@ function ExportList() {
     // DELETE handler
     const handleDelete = async (id) => {
         try {
-            await axios.delete(`http://localhost:5000/export/${id}`);
+            await axios.delete(`http://localhost:5000/export/delete/${id}`);
             alert("Deleted successfully");
-            getExports(); // refresh list
+            getExports(); 
         } catch (err) {
             console.error(err);
         }
@@ -57,7 +57,6 @@ function ExportList() {
 
                                 <td className="border p-3 flex gap-2 justify-center">
 
-                                    {/* UPDATE BUTTON */}
                                     <button
                                         className="bg-yellow-400 hover:bg-yellow-500 text-white px-3 py-1 rounded-full transition"
                                         onClick={() => alert("Update feature coming soon")}
@@ -65,7 +64,6 @@ function ExportList() {
                                         Update
                                     </button>
 
-                                    {/* DELETE BUTTON */}
                                     <button
                                         className="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded-full transition"
                                         onClick={() => handleDelete(item._id)}
