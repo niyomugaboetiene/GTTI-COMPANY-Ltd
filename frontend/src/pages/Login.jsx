@@ -13,7 +13,7 @@ function Login() {
         e.preventDefault();
 
         try {
-            await axios.post(
+           const res = await axios.post(
                 "http://localhost:5000/manager/login",
                 { userName, password }
             );
@@ -23,6 +23,7 @@ function Login() {
             // reset fields
             setUserName("");
             setPassword("");
+            alert(res.data.message);
             navigate('/')
 
         } catch (err) {

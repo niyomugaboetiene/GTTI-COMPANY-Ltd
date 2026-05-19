@@ -12,7 +12,7 @@ function Register() {
         e.preventDefault();
 
         try {
-            await axios.post(
+            const res = await axios.post(
                 "http://localhost:5000/manager/register",
                 { userName, password }
             );
@@ -22,6 +22,7 @@ function Register() {
             // reset fields
             setUserName("");
             setPassword("");
+            alert(res.data.message);
             navigate('/login');
 
         } catch (err) {
