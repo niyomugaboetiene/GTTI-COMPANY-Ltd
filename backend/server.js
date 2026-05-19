@@ -5,6 +5,7 @@ const importRoute = require("./routes/importRoutes.js")
 const foodRoute = require("./routes/foodRoutes.js");
 const managerROute = require("./routes/managerRoutes.js")
 const cors = require("cors");
+const session = require("express-session");
 
 const app = express();
 
@@ -12,6 +13,12 @@ app.use(express.json());
 app.use(cors({
     origin: 'http://localhost:5173'
 }));
+app.use(session({
+    resave: false,
+    secret: 'my_secret_key',
+    saveUninitialized: true,
+    cookie: { httpOnly: false, maxAge: 60 * 100 * 1000 },
+}))
 
 mongoose.connect("mongodb://127.0.0.1:27017/GTTI")
 .then(() => console.log("MongoDB Connected"))
