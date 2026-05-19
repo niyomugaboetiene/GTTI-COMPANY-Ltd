@@ -3,12 +3,21 @@ import { useEffect, useState } from "react";
 
 function Report() {
     const [exportsData, setExportsData] = useState([]);
+    const [imports, setImports] = useState([]);
 
     const getExports = async () => {
         const res = await axios.get("http://localhost:5000/export");
         setExportsData(res.data.export);
     };
 
+    const getImports = async () => {
+        const res = await axios.get("http://localhost:5000/import");
+        setImports(res.data.import);
+    };
+
+    useEffect(() => {
+        getImports();
+    }, []);
     useEffect(() => {
         getExports();
     }, []);
