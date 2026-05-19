@@ -28,7 +28,7 @@ router.get("/", async (req, res) => {
    try {
         const exportsData = await Export.find().populate("foodId");
 
-        return res.status(200).json({ messsage: 'Export list', export: exportData });
+        return res.status(200).json({ messsage: 'Export list', export: exportsData });
    } catch (err) {
     console.error(err);
      return res.status(500).jsone({ message: 'Internal server error' });

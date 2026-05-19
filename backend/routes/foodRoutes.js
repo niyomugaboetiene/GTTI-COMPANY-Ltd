@@ -3,18 +3,24 @@ const router = express.Router();
 
 const Food = require("../schemas/foodSchema");
 
+
 router.post("/add", async (req, res) => {
 
     try {
+//     foodId, exportDate,  quantity
+        const { foodId, exportsData, quantity } = req.body;
 
-        const food = new Food(req.body);
+        if (!foodId || !exportsData || !quantity) {
+            return res.status(404).json({ message: 'Fill out some missing fields' });
+        }
 
-        await food.save();
+        const newFood = await Food.create({ foodId, exportsData, quantity });
 
-        res.json(food);
+        return res.status(201).json({ mesdage: 'New food added', food: newFood });
 
     } catch (error) {
-        res.json(error);
+        console.error(err);
+        return res.status(500).json({ message: 'Internal server error' });
     }
 
 });
