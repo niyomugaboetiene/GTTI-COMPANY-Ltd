@@ -28,16 +28,16 @@ function AddExport() {
         e.preventDefault();
 
         await axios.post(
-            "http://localhost:5000/exports/add",
-            
+            "http://localhost:5000/exports/add", { foodId, exportDate, quantity }
         );
 
         alert("Export Added");
     };
 
     return (
-
-      
+      <div>
+           
+      </div>
     )
 }
 
