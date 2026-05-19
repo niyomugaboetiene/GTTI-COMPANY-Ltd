@@ -15,7 +15,7 @@ router.post("/add", async (req, res) => {
 
         const newExport = await Export.create({ foodId, exportsData, quantity });
 
-        return res.status(200).json({ mesdage: 'New export added', export: newExport });
+        return res.status(201).json({ mesdage: 'New export added', export: newExport });
 
     } catch (error) {
         console.error(err);
@@ -27,7 +27,8 @@ router.post("/add", async (req, res) => {
 router.get("/", async (req, res) => {
    try {
         const exportsData = await Export.find().populate("foodId");
-        
+
+        return res.status(200).jsone({ messsage: 'Export list', export: exportData });
    }
 });
 
