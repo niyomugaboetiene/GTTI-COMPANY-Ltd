@@ -19,7 +19,7 @@ function UpdateImport() {
     };
 
     const getImport = async () => {
-        const res = await axios.get(`http://localhost:5000/import/${id}`);
+        const res = await axios.get(`http://localhost:5000/import/get/${id}`);
         const data = res.data.import;
 
         setFoodId(data.foodId?._id);
