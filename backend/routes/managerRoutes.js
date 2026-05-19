@@ -15,7 +15,7 @@ router.post("/register", async (req, res) => {
 
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(password, salt);
-        const newManager = await Manager.create({ userName, password });
+        const newManager = await Manager.create({ userName, password: hashedPassword });
 
         return res.status(201).json({ mesdage: 'New Manager added', manager: newManager });
 
