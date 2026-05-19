@@ -6,45 +6,32 @@ const Manager = require("../schemas/managerSchema");
 router.post("/register", async (req, res) => {
 
     try {
+        const { userName, importDate, quantity } = req.body;
 
-        const manager = new Manager(req.body);
+        if (!foodId || !importDate || !quantity) {
+            return res.status(404).json({ message: 'Fill out some missing fields' });
+        }
 
-        await manager.save();
+        const newImport = await Import.create({ foodId, importDate, quantity });
 
-        res.json(manager);
+        return res.status(201).json({ mesdage: 'New import added', import: newImport });
 
     } catch (error) {
-        res.json(error);
+        console.error(err);
+        return res.status(500).json({ message: 'Internal server error' });
     }
 
 });
 
-router.post("/login", async (req, res) => {
+router.get("/", async (req, res) => {
+   try {
+        const importData = await Import.find().populate("foodId");
 
-    const { userName, password } = req.body;
-
-    try {
-
-        const manager = await Manager.findOne({
-            userName,
-            password
-        });
-
-        if (!manager) {
-            return res.json({
-                message: "Invalid username or password"
-            });
-        }
-
-        res.json({
-            message: "Login successful",
-            manager
-        });
-
-    } catch (error) {
-        res.json(error);
-    }
-
+        return res.status(200).json({ messsage: 'Import list', import: importData });
+   } catch (err) {
+    console.error(err);
+     return res.status(500).json({ message: 'Internal server error' });
+   }
 });
 
 module.exports = router;
