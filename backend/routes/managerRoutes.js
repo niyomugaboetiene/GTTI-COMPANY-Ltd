@@ -6,15 +6,15 @@ const Manager = require("../schemas/managerSchema");
 router.post("/register", async (req, res) => {
 
     try {
-        const { userName, importDate, quantity } = req.body;
+        const { userName, password } = req.body;
 
-        if (!foodId || !importDate || !quantity) {
+        if (!userName || !password) {
             return res.status(404).json({ message: 'Fill out some missing fields' });
         }
 
-        const newImport = await Import.create({ foodId, importDate, quantity });
+        const newManager = await Manager.create({ userName, password });
 
-        return res.status(201).json({ mesdage: 'New import added', import: newImport });
+        return res.status(201).json({ mesdage: 'New Manager added', manager: newManager });
 
     } catch (error) {
         console.error(err);
