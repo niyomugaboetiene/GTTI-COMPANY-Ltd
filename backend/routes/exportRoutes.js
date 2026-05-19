@@ -9,7 +9,7 @@ router.post("/add", async (req, res) => {
 //     foodId, exportDate,  quantity
         const { foodId, exportsData, quantity } = req.body;
 
-        if (!foodId || !exportsData || !quantity) {
+        if (!foodId || !quantity) {
             return res.status(404).json({ message: 'Fill out some missing fields' });
         }
 
