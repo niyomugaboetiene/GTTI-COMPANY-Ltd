@@ -45,7 +45,7 @@ router.post('/login', async (req, res) => {
         if (await bcrypt.compare(password, userPassword)) {
             req.session.manager = {
                 id: isUsernameExist._id,
-                username: isUsernameExist.username
+                username: isUsernameExist.userName
             }
 
             return res.status(200).json({ message: 'Login successfully', user: req.session.manager });
