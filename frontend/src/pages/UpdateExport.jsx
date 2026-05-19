@@ -59,10 +59,11 @@ const getExport = async () => {
         );
 
         alert("Export Updated");
-        navigate("/export-lis");
+        navigate("/export-list");
 
         }  catch (err) {
             console.error(err);
+            alert(err.response?.data?.message);
             const status = err.response?.status;
             if (status === 401) {
                 setIsAuth(false);
