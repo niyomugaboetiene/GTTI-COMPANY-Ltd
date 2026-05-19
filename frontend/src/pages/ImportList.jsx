@@ -6,8 +6,17 @@ function ImportList() {
     const [imports, setImports] = useState([]);
 
     const getImports = async () => {
-        const res = await axios.get("http://localhost:5000/import");
-        setImports(res.data.import);
+        try {
+           const res = await axios.get("http://localhost:5000/import");
+           setImports(res.data.import);
+           
+        }  catch (err) {
+            console.error(err);
+            const status = err.response?.status;
+            if (status === 401) {
+                setIsAuth(false);
+            }
+        }
     };
 
     useEffect(() => {
@@ -19,10 +28,25 @@ const handleDelete = async (id) => {
         await axios.delete(`http://localhost:5000/import/delete/${id}`);
         alert("Deleted successfully");
         getImports();
-    } catch (err) {
-        console.error(err);
+    }  catch (err) {
+            console.error(err);
+            const status = err.response?.status;
+            if (status === 401) {
+                setIsAuth(false);
+            }
     }
 };
+
+    if (!isAuth) {
+        return (
+            <div className="min-h-screen bg-gray-100 flex justify-center items-center">
+               <div className="bg-sky-200 h-30 p-3 rounded-xl">
+                  <h1 className="text-center mt-2">Please login to access this page.</h1>
+                  <button onClick={() => navigate('/login')} className="bg-blue-500 px-6 py-2 mt-4 text-white font-bold rounded-lg hover:bg-blue-600 transition-colors">Login</button>
+               </div>
+            </div>
+        )
+    }
 
     return (
         <div className="bg-gray-100 min-h-screen flex justify-center items-start">
