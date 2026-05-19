@@ -14,7 +14,8 @@ router.post("/add", async (req, res) => {
         }
 
         const newExport = await Export.create({ foodId, exportsData, quantity });
-        
+
+        return res.status(200)
 
     } catch (error) {
         res.json(error);
