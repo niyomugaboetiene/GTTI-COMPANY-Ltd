@@ -25,10 +25,10 @@ router.post("/add", async (req, res) => {
 });
 
 router.get("/", async (req, res) => {
-
-    const exportsData = await Export.find().populate("foodId");
-
-    res.json(exportsData);
+   try {
+        const exportsData = await Export.find().populate("foodId");
+        
+   }
 });
 
 module.exports = router;
