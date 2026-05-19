@@ -44,7 +44,8 @@ router.post('/login', async (req, res) => {
 
         if (await bcrypt.compare(password, userPassword)) {
             req.session.manager = {
-                
+                id: isUsernameExist._id,
+                username: isUsernameExist.username
             }
         }
     }
