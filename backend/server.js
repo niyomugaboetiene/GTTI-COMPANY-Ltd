@@ -13,10 +13,10 @@ mongoose.connect("mongodb://127.0.0.1:27017/GTTI")
 .then(() => console.log("MongoDB Connected"))
 .catch((err) => console.log(err));
 
-app.use("/manager", require("./routes/managerRoutes"));
-app.use("/foods", require("./routes/foodRoutes"));
-app.use("/imports", require("./routes/importRoutes"));
-app.use("/exports", require("./routes/exportRoutes"));
+app.use("/manager", require("./routes/managerRoutes.js"));
+app.use("/foods", require("./routes/foodRoutes.js"));
+app.use("/imports", require("./routes/importRoutes.js"));
+app.use("/exports", require("./routes/exportRoutes.js"));
 
 const PORT = 5000;
 

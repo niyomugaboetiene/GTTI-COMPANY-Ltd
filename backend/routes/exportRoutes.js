@@ -18,7 +18,7 @@ router.post("/add", async (req, res) => {
         return res.status(201).json({ mesdage: 'New export added', export: newExport });
 
     } catch (error) {
-        console.error(err);
+        console.error(error);
         return res.status(500).json({ message: 'Internal server error' });
     }
 
