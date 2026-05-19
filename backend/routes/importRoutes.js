@@ -6,16 +6,16 @@ const Import = require("../schemas/importSchema");
 router.post("/add", async (req, res) => {
 
     try {
-//     foodId, exportDate,  quantity
-        const { foodId, exportsData, quantity } = req.body;
+//     foodId, importDate,  quantity
+        const { foodId, importDate, quantity } = req.body;
 
-        if (!foodId || !exportsData || !quantity) {
+        if (!foodId || !importDate || !quantity) {
             return res.status(404).json({ message: 'Fill out some missing fields' });
         }
 
-        const newExport = await Import.create({ foodId, exportsData, quantity });
+        const newImport = await Import.create({ foodId, importDate, quantity });
 
-        return res.status(201).json({ mesdage: 'New export added', export: newExport });
+        return res.status(201).json({ mesdage: 'New import added', import: newImport });
 
     } catch (error) {
         console.error(err);
