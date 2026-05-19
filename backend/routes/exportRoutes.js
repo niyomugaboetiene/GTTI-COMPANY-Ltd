@@ -13,10 +13,12 @@ router.post("/add", async (req, res) => {
             return res.status(404).json({ message: 'Fill out some missing fields' });
         }
 
-        const isQunatityExist = await Import.find();
+        const isQuantityExist = await Import.findOne({ foodId: foodId });
 
-        if (isQunatityExist.quantity < quantity) {
-            return res.status(403).json({ message: `You dont have this quantity in stock. the stock is ${isQunatityExist.quantity}` });
+        console.log(isQuantityExist);
+
+        if (isQuantityExist.quantity < quantity) {
+            return res.status(403).json({ message: `You dont have this quantity in stock. the stock is ${isQuantityExist.quantity}` });
         }
         const newExport = await Export.create({ foodId, exportDate, quantity });
 
