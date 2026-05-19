@@ -4,6 +4,23 @@ const router = express.Router();
 const Export = require("../schemas/exportSchema");
 const Import = require("../schemas/importSchema.js");
 
+router.get("/get/:id", async (req, res) => {
+    try {
+        const exportItem = await Export.findById(req.params.id)
+            .populate("foodId");
+
+        if (!exportItem) {
+            return res.status(404).json({ message: "Export not found" });
+        }
+
+        return res.status(200).json({ export: exportItem });
+
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({ message: "Internal server error" });
+    }
+});
+
 router.post("/add", async (req, res) => {
 
     try {
@@ -49,6 +66,60 @@ router.get("/", async (req, res) => {
     console.error(err);
      return res.status(500).jsone({ message: 'Internal server error' });
    }
+});
+router.put("/update/:id", async (req, res) => {
+    try {
+        const { foodId, exportDate, quantity } = req.body;
+
+        const exportItem = await Export.findById(req.params.id);
+
+        if (!exportItem) {
+            return res.status(404).json({ message: "Export not found" });
+        }
+
+        const importStock = await Import.findOne({ foodId });
+
+        if (!importStock) {
+            return res.status(404).json({ message: "No stock found" });
+        }
+
+        const quantityNum = Number(quantity);
+
+        const restoredStock = importStock.quantity + exportItem.quantity;
+
+        if (restoredStock < quantityNum) {
+            return res.status(403).json({
+                message: "Not enough stock for update"
+            });
+        }
+
+        const finalStock = restoredStock - quantityNum;
+
+        await Import.findOneAndUpdate(
+            { foodId },
+            { quantity: finalStock },
+            { new: true }
+        );
+
+        const updatedExport = await Export.findByIdAndUpdate(
+            req.params.id,
+            {
+                foodId,
+                exportDate,
+                quantity: quantityNum
+            },
+            { new: true }
+        ).populate("foodId");
+
+        return res.status(200).json({
+            message: "Export updated successfully",
+            export: updatedExport
+        });
+
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({ message: "Internal server error" });
+    }
 });
 
 module.exports = router;
