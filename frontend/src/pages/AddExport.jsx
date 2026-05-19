@@ -55,14 +55,14 @@ function AddExport() {
                </select>
            </div>
            <div>
-              <label>Date (optional)</label>
+              <label  className="block text-xl text-blue-600">Date (optional)</label>
               <input type="date" onChange={(e) => setExportDate(e.target.value)} className="w-full bg-gray-300 py-3 rounded-full text-gray-900 focus:outline focus:outline-gray-800" />
            </div>
            <div>
-              <label>Quantity</label>
+              <label  className="block text-xl text-blue-600">Quantity</label>
               <input type="number" onChange={(e) => setQuantity(e.target.value)} className="w-full bg-gray-300 py-3 rounded-full text-gray-900 focus:outline focus:outline-gray-800" />
            </div>
-           <button onClick={handleSubmit}>Save Export</button>
+           <button onClick={handleSubmit} className="bg-blue-500 w-full mt-3 py-2 rounded-full text-white hover:bg-blue-600 transition-colors">Save Export</button>
         </div>
       </div>
     )
