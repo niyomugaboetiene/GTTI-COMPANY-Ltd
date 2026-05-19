@@ -11,7 +11,7 @@ function FoodList() {
             "http://localhost:5000/foods"
         );
 
-        setFoods(res.data);
+        setFoods(res.data.food);
     };
 
     useEffect(() => {
