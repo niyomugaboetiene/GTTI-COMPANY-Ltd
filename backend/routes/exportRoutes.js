@@ -15,10 +15,11 @@ router.post("/add", async (req, res) => {
 
         const newExport = await Export.create({ foodId, exportsData, quantity });
 
-        return res.status(200)
+        return res.status(200).json({ mesdage: 'New export added', export: newExport });
 
     } catch (error) {
-        res.json(error);
+        console.error(err);
+        return res.status(500).jsone({ message: 'Internal server error' });
     }
 
 });
