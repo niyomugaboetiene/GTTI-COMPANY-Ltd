@@ -36,38 +36,67 @@ router.get("/", async (req, res) => {
    }
 });
 
-router.put("/update/:id", async (req, res) => {
-
+router.get("/get/:id", async (req, res) => {
     try {
+        const food = await Food.findById(req.params.id);
+
+        if (!food) {
+            return res.status(404).json({ message: "Food not found" });
+        }
+
+        return res.status(200).json({ food });
+
+    } catch (error) {
+        return res.status(500).json({ message: "Internal server error" });
+    }
+});
+
+router.put("/update/:id", async (req, res) => {
+    try {
+        const { foodName, foodOwnerName } = req.body;
+
+        const food = await Food.findById(req.params.id);
+
+        if (!food) {
+            return res.status(404).json({ message: "Food not found" });
+        }
 
         const updatedFood = await Food.findByIdAndUpdate(
             req.params.id,
-            req.body,
+            {
+                foodName,
+                foodOwnerName
+            },
             { new: true }
         );
 
-        res.json(updatedFood);
-
-    } catch (error) {
-        res.json(error);
-    }
-
-});
-
-router.delete("/delete/:id", async (req, res) => {
-
-    try {
-
-        await Food.findByIdAndDelete(req.params.id);
-
-        res.json({
-            message: "Food deleted"
+        return res.status(200).json({
+            message: "Food updated successfully",
+            food: updatedFood
         });
 
     } catch (error) {
-        res.json(error);
+        return res.status(500).json({ message: "Internal server error" });
     }
+});
 
+router.delete("/delete/:id", async (req, res) => {
+    try {
+        const food = await Food.findById(req.params.id);
+
+        if (!food) {
+            return res.status(404).json({ message: "Food not found" });
+        }
+
+        await Food.findByIdAndDelete(req.params.id);
+
+        return res.status(200).json({
+            message: "Food deleted successfully"
+        });
+
+    } catch (error) {
+        return res.status(500).json({ message: "Internal server error" });
+    }
 });
 
 module.exports = router;

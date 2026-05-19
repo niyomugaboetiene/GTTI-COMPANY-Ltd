@@ -35,6 +35,24 @@ router.get("/", async (req, res) => {
    }
 });
 
+router.get("/get/:id", async (req, res) => {
+    try {
+        const importItem = await Import.findById(req.params.id)
+            .populate("foodId");
+
+        if (!importItem) {
+            return res.status(404).json({ message: "Import not found" });
+        }
+
+        return res.status(200).json({
+            import: importItem
+        });
+
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({ message: "Internal server error" });
+    }
+});
 
 router.put("/update/:id", async (req, res) => {
     try {
