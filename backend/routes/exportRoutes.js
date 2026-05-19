@@ -7,13 +7,13 @@ router.post("/add", async (req, res) => {
 
     try {
 //     foodId, exportDate,  quantity
-        const { foodId, exportsData, quantity } = req.body;
+        const { foodId, exportDate, quantity } = req.body;
 
         if (!foodId || !quantity) {
             return res.status(404).json({ message: 'Fill out some missing fields' });
         }
 
-        const newExport = await Export.create({ foodId, exportsData, quantity });
+        const newExport = await Export.create({ foodId, exportDate, quantity });
 
         return res.status(201).json({ mesdage: 'New export added', export: newExport });
 
