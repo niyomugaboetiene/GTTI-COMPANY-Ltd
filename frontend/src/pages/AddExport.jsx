@@ -29,7 +29,6 @@ function AddExport() {
 
             alert("Export Added");
 
-            // reset fields
             setFoodId("");
             setExportDate("");
             setQuantity("");
@@ -58,7 +57,6 @@ function AddExport() {
                     Add Export
                 </h1>
 
-                {/* Food */}
                 <div className="mb-4">
                     <label className="block text-lg text-blue-600 mb-1">
                         Food
@@ -79,7 +77,6 @@ function AddExport() {
                     </select>
                 </div>
 
-                {/* Date */}
                 <div className="mb-4">
                     <label className="block text-lg text-blue-600 mb-1">
                         Date (optional)
@@ -93,7 +90,6 @@ function AddExport() {
                     />
                 </div>
 
-                {/* Quantity */}
                 <div className="mb-4">
                     <label className="block text-lg text-blue-600 mb-1">
                         Quantity
@@ -107,7 +103,6 @@ function AddExport() {
                     />
                 </div>
 
-                {/* Button */}
                 <button
                     type="submit"
                     className="bg-blue-500 w-full py-3 rounded-full text-white hover:bg-blue-600 transition-colors"
