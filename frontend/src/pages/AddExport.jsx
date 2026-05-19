@@ -6,6 +6,7 @@ function AddExport() {
     const [exportDate, setExportDate] = useState("");
     const [foodId, setFoodId] = useState("");
     const [quantity, setQuantity] = useState("");
+    const [isAuth, setIsAuth] = useState(true);
 
     const [foods, setFoods] = useState([]);
 
@@ -42,9 +43,22 @@ function AddExport() {
             if (errorMessage === "You dont have this quantity in stock") {
                 alert(errorMessage);
             }
+            if (errorMessage === "Unauthorized") {
+                setIsAuth(false);
+            }
         }
     };
 
+    if (!isAuth) {
+        return (
+            <div className="min-h-screen bg-gray-100 flex justify-center items-center">
+               <div className="bg-sky-200">
+                  <h1>Please login to access this page.</h1>
+               </div>
+            </div>
+        )
+    }
+    
     return (
         <div className="bg-gray-100 min-h-screen flex justify-center items-center">
 
