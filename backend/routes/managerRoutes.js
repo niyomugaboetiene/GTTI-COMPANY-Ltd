@@ -39,7 +39,14 @@ router.post('/login', async (req, res) => {
         if (!isUsernameExist) {
             return res.status(404).json({ message: 'Invalid username' });
         }
-        
+
+        const userPassword = isUsernameExist.password;
+
+        if (await bcrypt.compare(password, userPassword)) {
+            req.session.manager = {
+                
+            }
+        }
     }
 })
 
