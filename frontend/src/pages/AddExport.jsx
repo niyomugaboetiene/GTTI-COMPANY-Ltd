@@ -45,7 +45,12 @@ function AddExport() {
                </select>
            </div>
            <div>
-            
+              <label htmlFor="">Date (optional)</label>
+              <input type="date" onChange={(e) => setExportDate(e.target.value)} />
+           </div>
+           <div>
+              <label htmlFor="">Date (optional)</label>
+              <input type="date" onChange={(e) => setExportDate(e.target.value)} />
            </div>
       </div>
     )
