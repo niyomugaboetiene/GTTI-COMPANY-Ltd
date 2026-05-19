@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function AddImport() {
 
@@ -8,7 +9,9 @@ function AddImport() {
     const [quantity, setQuantity] = useState("");
 
     const [foods, setFoods] = useState([]);
+    const [isAuth, setIsAuth] = useState(true);
 
+    const navigate = useNavigate();
     const getFoods = async () => {
         const res = await axios.get("http://localhost:5000/foods");
         setFoods(res.data.food);
@@ -36,8 +39,23 @@ function AddImport() {
 
         } catch (err) {
             console.error(err);
+            const status = err.response?.status;
+            if (status === 401) {
+                setIsAuth(false);
+            }
         }
     };
+
+   if (!isAuth) {
+        return (
+            <div className="min-h-screen bg-gray-100 flex justify-center items-center">
+               <div className="bg-sky-200 h-30 p-3 rounded-xl">
+                  <h1 className="text-center mt-2">Please login to access this page.</h1>
+                  <button onClick={() => navigate('/login')} className="bg-blue-500 px-6 py-2 mt-4 text-white font-bold rounded-lg hover:bg-blue-600 transition-colors">Login</button>
+               </div>
+            </div>
+        )
+    }
 
     return (
         <div className="bg-gray-100 min-h-screen flex justify-center items-center">
