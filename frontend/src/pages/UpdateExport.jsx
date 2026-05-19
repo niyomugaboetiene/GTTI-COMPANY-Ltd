@@ -18,15 +18,19 @@ function UpdateExport() {
         setFoods(res.data.food);
     };
 
-    const getExport = async () => {
-        const res = await axios.get(`http://localhost:5000/export/${id}`);
+const getExport = async () => {
+    try {
+        const res = await axios.get(`http://localhost:5000/export/get/${id}`);
         const data = res.data.export;
 
-        setFoodId(data.foodId?._id);
-        setExportDate(data.exportDate);
+        setFoodId(data.foodId?._id || data.foodId);
+        setExportDate(data.exportDate?.split("T")[0]);
         setQuantity(data.quantity);
-    };
 
+    } catch (err) {
+        console.error(err);
+    }
+};
     useEffect(() => {
         getFoods();
         getExport();

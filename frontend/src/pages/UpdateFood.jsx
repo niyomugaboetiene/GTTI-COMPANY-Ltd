@@ -12,21 +12,25 @@ function UpdateFood() {
         foodOwnerName: ""
     });
 
+    const getFoodById = async () => {
+        try {
+            const res = await axios.get(`http://localhost:5000/foods/get/${id}`);
+            setFormData(res.data.food);
+        } catch (err) {
+            console.error(err);
+        }
+    };
+
+    useEffect(() => {
+        getFoodById();
+    }, []);
+
     const handleChange = (e) => {
         setFormData({
             ...formData,
             [e.target.name]: e.target.value
         });
     };
-
-    const getFood = async () => {
-        const res = await axios.get(`http://localhost:5000/foods/${id}`);
-        setFormData(res.data.food);
-    };
-
-    useEffect(() => {
-        getFood();
-    }, []);
 
     const handleUpdate = async (e) => {
         e.preventDefault();
@@ -36,7 +40,7 @@ function UpdateFood() {
             formData
         );
 
-        alert("Food Updated");
+        alert("Food updated successfully");
         navigate("/food-list");
     };
 
