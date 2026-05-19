@@ -11,7 +11,7 @@ function ImportList() {
             "http://localhost:5000/import"
         );
 
-        setImports(res.data);
+        setImports(res.data.import);
     };
 
     useEffect(() => {

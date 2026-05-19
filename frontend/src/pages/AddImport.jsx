@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 
 function AddImport() {
 
-    const [exportDate, setExportDate] = useState("");
+    const [importDate, setImportDate] = useState("");
     const [foodId, setFoodId] = useState("");
     const [quantity, setQuantity] = useState("");
 
@@ -27,7 +27,7 @@ function AddImport() {
        e.preventDefault();
         try {
         await axios.post(
-            "http://localhost:5000/export/add", { foodId, exportDate, quantity }
+            "http://localhost:5000/import/add", { foodId, exportDate, quantity }
         );
 
         console.log("Result", foodId, exportDate, quantity);
@@ -49,13 +49,13 @@ function AddImport() {
            </div>
            <div>
               <label htmlFor="">Date (optional)</label>
-              <input type="date" onChange={(e) => setExportDate(e.target.value)} />
+              <input type="date" onChange={(e) => setImportDate(e.target.value)} />
            </div>
            <div>
               <label htmlFor="">Quantity</label>
               <input type="number" onChange={(e) => setQuantity(e.target.value)} />
            </div>
-           <button onClick={handleSubmit}>Save Export</button>
+           <button onClick={handleSubmit}>Save Import</button>
       </div>
     )
 }
