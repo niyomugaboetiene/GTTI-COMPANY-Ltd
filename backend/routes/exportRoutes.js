@@ -13,7 +13,8 @@ router.post("/add", async (req, res) => {
             return res.status(404).json({ message: 'Fill out some missing fields' });
         }
 
-        const newExport = 
+        const newExport = await Export.create({ foodId, exportsData, quantity });
+        
 
     } catch (error) {
         res.json(error);
