@@ -7,13 +7,17 @@ const Import = require("../schemas/importSchema.js");
 router.post("/add", async (req, res) => {
 
     try {
-//     foodId, exportDate,  quantity
         const { foodId, exportDate, quantity } = req.body;
 
         if (!foodId || !quantity) {
             return res.status(404).json({ message: 'Fill out some missing fields' });
         }
 
+        const isQunatityExist = await Import.find();
+
+        if (isQunatityExist.quantity < quantity) {
+            return res.status(403).json({ message: `You dont have this quantity in stock. the stock is ${isQunatityExist.quantity}` });
+        }
         const newExport = await Export.create({ foodId, exportDate, quantity });
 
         return res.status(201).json({ mesdage: 'New export added', export: newExport });
