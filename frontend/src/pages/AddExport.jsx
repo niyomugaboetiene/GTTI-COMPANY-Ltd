@@ -11,8 +11,16 @@ function AddExport() {
     const [foods, setFoods] = useState([]);
 
     const getFoods = async () => {
-        const res = await axios.get("http://localhost:5000/foods");
-        setFoods(res.data.food);
+        try {
+           const res = await axios.get("http://localhost:5000/foods");
+           setFoods(res.data.food);
+        } catch (err) {
+            const status = err.response?.status;
+            if (status === 401) {
+                setIsAuth(false);
+            }
+        }
+
     };
 
     useEffect(() => {
@@ -37,13 +45,13 @@ function AddExport() {
         } catch (err) {
             console.error(err);
 
-            const errorMessage =
-                err.response?.data?.message || "Error occurred";
+            const errorMessage = err.response?.data?.message || "Error occurred";
+            const status = err.response?.status;
 
             if (errorMessage === "You dont have this quantity in stock") {
                 alert(errorMessage);
             }
-            if (errorMessage === "Unauthorized") {
+            if (status === 401) {
                 setIsAuth(false);
             }
         }
@@ -52,13 +60,13 @@ function AddExport() {
     if (!isAuth) {
         return (
             <div className="min-h-screen bg-gray-100 flex justify-center items-center">
-               <div className="bg-sky-200">
-                  <h1>Please login to access this page.</h1>
+               <div className="bg-sky-200 h-30 p-3 rounded-xl">
+                  <h1 className="text-center mt-10">Please login to access this page.</h1>
                </div>
             </div>
         )
     }
-    
+
     return (
         <div className="bg-gray-100 min-h-screen flex justify-center items-center">
 
