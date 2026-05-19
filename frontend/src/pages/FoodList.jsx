@@ -6,11 +6,7 @@ function FoodList() {
     const [foods, setFoods] = useState([]);
 
     const getFoods = async () => {
-
-        const res = await axios.get(
-            "http://localhost:5000/foods"
-        );
-
+        const res = await axios.get("http://localhost:5000/foods");
         setFoods(res.data.food);
     };
 
@@ -19,33 +15,28 @@ function FoodList() {
     }, []);
 
     const deleteFood = async (id) => {
-
-        await axios.delete(
-            `http://localhost:5000/foods/delete/${id}`
-        );
-
+        await axios.delete(`http://localhost:5000/foods/delete/${id}`);
         getFoods();
     };
 
     return (
+        <div className="bg-gray-100 min-h-screen p-6 flex justify-center">
 
-        <div className="p-6">
+            <div className="bg-white p-6 rounded-xl shadow-lg w-full max-w-4xl">
 
-            <div className="bg-white p-5 rounded shadow">
-
-                <h1 className="text-2xl font-bold mb-4">
+                <h1 className="text-3xl font-bold text-blue-700 mb-6 text-center">
                     Food List
                 </h1>
 
-                <table className="w-full border">
+                <table className="w-full border border-gray-300">
 
-                    <thead className="bg-gray-200">
+                    <thead className="bg-blue-500 text-white">
 
                         <tr>
 
-                            <th className="border p-2">Food</th>
-                            <th className="border p-2">Owner</th>
-                            <th className="border p-2">Action</th>
+                            <th className="border p-3">Food Name</th>
+                            <th className="border p-3">Owner</th>
+                            <th className="border p-3">Action</th>
 
                         </tr>
 
@@ -53,34 +44,32 @@ function FoodList() {
 
                     <tbody>
 
-                        {
-                            foods.map((food) => (
+                        {foods.map((food) => (
 
-                                <tr key={food._id}>
+                            <tr key={food._id} className="text-center">
 
-                                    <td className="border p-2">
-                                        {food.foodName}
-                                    </td>
+                                <td className="border p-3">
+                                    {food.foodName}
+                                </td>
 
-                                    <td className="border p-2">
-                                        {food.foodOwnerName}
-                                    </td>
+                                <td className="border p-3">
+                                    {food.foodOwnerName}
+                                </td>
 
-                                    <td className="border p-2">
+                                <td className="border p-3 flex justify-center gap-2">
 
-                                        <button
-                                            onClick={() => deleteFood(food._id)}
-                                            className="bg-red-500 text-white px-3 py-1"
-                                        >
-                                            Delete
-                                        </button>
+                                    <button
+                                        onClick={() => deleteFood(food._id)}
+                                        className="bg-red-500 hover:bg-red-600 text-white px-4 py-1 rounded-full transition"
+                                    >
+                                        Delete
+                                    </button>
 
-                                    </td>
+                                </td>
 
-                                </tr>
+                            </tr>
 
-                            ))
-                        }
+                        ))}
 
                     </tbody>
 
@@ -89,7 +78,7 @@ function FoodList() {
             </div>
 
         </div>
-    )
+    );
 }
 
-export default FoodList
+export default FoodList;

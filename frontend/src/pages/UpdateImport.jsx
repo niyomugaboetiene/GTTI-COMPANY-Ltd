@@ -61,6 +61,7 @@ function UpdateImport() {
                     onChange={(e) => setFoodId(e.target.value)}
                     className="w-full bg-gray-200 py-3 px-4 rounded-full mb-4"
                 >
+                    <option value="">select food</option>
                     {foods.map((food) => (
                         <option key={food._id} value={food._id}>
                             {food.foodName}
