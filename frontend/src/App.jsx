@@ -21,9 +21,12 @@ function App() {
 
       <div className="min-h-screen bg-gray-100">
 
-     <div className="flex justify-between bg-blue-600 space-x-5 flex-wrap">
+     <div className="flex justify-between bg-blue-600 p-2 flex-wrap">
       <div>
-        <nav className=" text-white p-4 flex ">
+        <h1 className="text-3xl text-white font-bold mt-3 ms-12">GTTI</h1>
+      </div>
+      <div>
+        <nav className=" text-white p-4 flex space-x-5">
 
           <Link to="/">Home</Link>
 
@@ -38,7 +41,7 @@ function App() {
           <Link to="/report">Report</Link>
         </nav>
         </div>
-        <div>
+        <div className="flex space-x-3">
           <button>Register</button>
           <button>Login</button>
         </div>
