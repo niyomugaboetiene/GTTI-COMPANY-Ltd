@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { Navigate, useNavigate } from "react-router-dom";
 
 function AddExport() {
 
@@ -7,6 +8,8 @@ function AddExport() {
     const [foodId, setFoodId] = useState("");
     const [quantity, setQuantity] = useState("");
     const [isAuth, setIsAuth] = useState(true);
+
+    const navigate = useNavigate();
 
     const [foods, setFoods] = useState([]);
 
@@ -61,7 +64,8 @@ function AddExport() {
         return (
             <div className="min-h-screen bg-gray-100 flex justify-center items-center">
                <div className="bg-sky-200 h-30 p-3 rounded-xl">
-                  <h1 className="text-center mt-10">Please login to access this page.</h1>
+                  <h1 className="text-center mt-2">Please login to access this page.</h1>
+                  <button onClick={() => navigate('/login')} className="bg-blue-500 px-6 py-2 mt-4 text-white font-bold rounded-lg hover:bg-blue-600 transition-colors">Login</button>
                </div>
             </div>
         )
