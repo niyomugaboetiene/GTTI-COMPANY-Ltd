@@ -35,4 +35,56 @@ router.get("/", async (req, res) => {
    }
 });
 
+
+router.put("/update/:id", async (req, res) => {
+    try {
+        const { foodId, importDate, quantity } = req.body;
+
+        const importItem = await Import.findById(req.params.id);
+
+        if (!importItem) {
+            return res.status(404).json({ message: "Import not found" });
+        }
+
+        const updatedImport = await Import.findByIdAndUpdate(
+            req.params.id,
+            {
+                foodId,
+                importDate,
+                quantity: Number(quantity)
+            },
+            { new: true }
+        );
+
+        return res.status(200).json({
+            message: "Import updated successfully",
+            import: updatedImport
+        });
+
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({ message: "Internal server error" });
+    }
+});
+
+router.delete("/delete/:id", async (req, res) => {
+    try {
+        const importItem = await Import.findById(req.params.id);
+
+        if (!importItem) {
+            return res.status(404).json({ message: "Import not found" });
+        }
+
+        await Import.findByIdAndDelete(req.params.id);
+
+        return res.status(200).json({
+            message: "Import deleted successfully"
+        });
+
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({ message: "Internal server error" });
+    }
+});
+
 module.exports = router;
