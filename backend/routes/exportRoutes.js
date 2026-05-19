@@ -6,12 +6,8 @@ const Export = require("../schemas/exportSchema");
 router.post("/add", async (req, res) => {
 
     try {
-
-        const exportedFood = new Export(req.body);
-
-        await exportedFood.save();
-
-        res.json(exportedFood);
+//     foodId, exportDate,  quantity
+        const 
 
     } catch (error) {
         res.json(error);
