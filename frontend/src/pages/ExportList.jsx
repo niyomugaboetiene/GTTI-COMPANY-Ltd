@@ -10,7 +10,7 @@ function ExportList() {
 
     const getExports = async () => {
         try {
-           const res = await axios.get("http://localhost:5000/export");
+           const res = await axios.get("http://localhost:5000/export", { withCredentials: true });
            setExportsData(res.data.export);
 
         }catch (err) {
@@ -30,7 +30,7 @@ function ExportList() {
     // DELETE handler
     const handleDelete = async (id) => {
         try {
-            await axios.delete(`http://localhost:5000/export/delete/${id}`);
+            await axios.delete(`http://localhost:5000/export/delete/${id}`, { withCredentials: true });
             alert("Deleted successfully");
             getExports(); 
         } catch (err) {

@@ -15,13 +15,13 @@ function UpdateImport() {
     const [foods, setFoods] = useState([]);
 
     const getFoods = async () => {
-        const res = await axios.get("http://localhost:5000/foods");
+        const res = await axios.get("http://localhost:5000/foods", { withCredentials: true });
         setFoods(res.data.food);
     };
 
     const getImport = async () => {
         try {
-          const res = await axios.get(`http://localhost:5000/import/get/${id}`);
+          const res = await axios.get(`http://localhost:5000/import/get/${id}`, { withCredentials: true });
           const data = res.data.import;
 
           setFoodId(data.foodId?._id);
@@ -47,7 +47,7 @@ function UpdateImport() {
         try {
           await axios.put(
               `http://localhost:5000/import/update/${id}`,
-              { foodId, importDate, quantity }
+              { foodId, importDate, quantity }, { withCredentials: true }
           );
 
         alert("Import Updated");

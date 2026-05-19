@@ -15,7 +15,7 @@ function UpdateFood() {
 
     const getFoodById = async () => {
         try {
-            const res = await axios.get(`http://localhost:5000/foods/get/${id}`);
+            const res = await axios.get(`http://localhost:5000/foods/get/${id}`, { withCredentials: true });
             setFormData(res.data.food);
         }    catch (err) {
             console.error(err);
@@ -43,7 +43,7 @@ function UpdateFood() {
         try { 
           await axios.put(
             `http://localhost:5000/foods/update/${id}`,
-            formData
+            formData, { withCredentials: true }
         );
 
         alert("Food updated successfully");

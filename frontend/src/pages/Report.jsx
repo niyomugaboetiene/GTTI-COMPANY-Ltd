@@ -8,7 +8,7 @@ function Report() {
 
     const getExports = async () => {
         try {
-           const res = await axios.get("http://localhost:5000/export");
+           const res = await axios.get("http://localhost:5000/export", { withCredentials: true });
            setExportsData(res.data.export);
         }   catch (err) {
             console.error(err);
@@ -21,7 +21,7 @@ function Report() {
 
     const getImports = async () => {
         try {
-           const res = await axios.get("http://localhost:5000/import");
+           const res = await axios.get("http://localhost:5000/import", { withCredentials: true });
            setImports(res.data.import);
 
         }  catch (err) {

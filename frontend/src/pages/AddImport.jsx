@@ -15,7 +15,7 @@ function AddImport() {
     
     const getFoods = async () => {
         try {
-          const res = await axios.get("http://localhost:5000/foods");
+          const res = await axios.get("http://localhost:5000/foods", { withCredentials: true });
           setFoods(res.data.food);
          } catch (err) {
             console.error(err);
@@ -37,7 +37,7 @@ function AddImport() {
         try {
             await axios.post(
                 "http://localhost:5000/import/add",
-                { foodId, importDate, quantity }
+                { foodId, importDate, quantity }, { withCredentials: true }
             );
 
             alert("Import Added");

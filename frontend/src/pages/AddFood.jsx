@@ -25,7 +25,7 @@ function AddFood() {
         try {
             await axios.post(
                 "http://localhost:5000/foods/add",
-                formData
+                formData, { withCredentials: true }
             );
 
             alert("Food Added");
@@ -44,7 +44,7 @@ function AddFood() {
         }
     };
 
-        if (!isAuth) {
+    if (!isAuth) {
         return (
             <div className="min-h-screen bg-gray-100 flex justify-center items-center">
                <div className="bg-sky-200 h-30 p-3 rounded-xl">

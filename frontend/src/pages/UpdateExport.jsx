@@ -16,7 +16,7 @@ function UpdateExport() {
 
     const getFoods = async () => {
         try {
-           const res = await axios.get("http://localhost:5000/foods");
+           const res = await axios.get("http://localhost:5000/foods", { withCredentials: true });
            setFoods(res.data.food);
         }   catch (err) {
             console.error(err);
@@ -29,7 +29,7 @@ function UpdateExport() {
 
 const getExport = async () => {
     try {
-        const res = await axios.get(`http://localhost:5000/export/get/${id}`);
+        const res = await axios.get(`http://localhost:5000/export/get/${id}`, { withCredentials: true });
         const data = res.data.export;
 
         setFoodId(data.foodId?._id || data.foodId);
@@ -55,7 +55,7 @@ const getExport = async () => {
 
         await axios.put(
             `http://localhost:5000/export/update/${id}`,
-            { foodId, exportDate, quantity }
+            { foodId, exportDate, quantity }, { withCredentials: true }
         );
 
         alert("Export Updated");

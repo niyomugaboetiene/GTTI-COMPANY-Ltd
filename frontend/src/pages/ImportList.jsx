@@ -8,7 +8,7 @@ function ImportList() {
 
     const getImports = async () => {
         try {
-           const res = await axios.get("http://localhost:5000/import");
+           const res = await axios.get("http://localhost:5000/import", { withCredentials: true });
            setImports(res.data.import);
            
         }  catch (err) {
@@ -26,7 +26,7 @@ function ImportList() {
 
 const handleDelete = async (id) => {
     try {
-        await axios.delete(`http://localhost:5000/import/delete/${id}`);
+        await axios.delete(`http://localhost:5000/import/delete/${id}`, { withCredentials: true });
         alert("Deleted successfully");
         getImports();
     }  catch (err) {

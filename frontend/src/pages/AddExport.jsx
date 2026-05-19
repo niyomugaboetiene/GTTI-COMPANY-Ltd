@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function AddExport() {
 
@@ -15,7 +15,7 @@ function AddExport() {
 
     const getFoods = async () => {
         try {
-           const res = await axios.get("http://localhost:5000/foods");
+           const res = await axios.get("http://localhost:5000/foods", { withCredentials: true });
            setFoods(res.data.food);
         } catch (err) {
             const status = err.response?.status;
@@ -36,7 +36,7 @@ function AddExport() {
         try {
             await axios.post(
                 "http://localhost:5000/export/add",
-                { foodId, exportDate, quantity }
+                { foodId, exportDate, quantity }, { withCredentials: true }
             );
 
             alert("Export Added");
