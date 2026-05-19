@@ -10,6 +10,7 @@ import UpdateImport from "./pages/UpdateImport";
 import AddExport from "./pages/AddExport";
 import ExportList from "./pages/ExportList";
 import UpdateExport from "./pages/UpdateExport";
+import UpdateFood from "./pages/UpdateFood";
 
 function App() {
 
@@ -46,6 +47,7 @@ function App() {
           <Route path="/add-export" element={<AddExport />} />
           <Route path="/export-list" element={<ExportList />} />
           <Route path="/export/update/:id" element={<UpdateExport />} />
+          <Route path="/food/update/:id" element={<UpdateFood />} />
 
         </Routes>
 

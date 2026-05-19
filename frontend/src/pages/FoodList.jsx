@@ -17,8 +17,18 @@ function FoodList() {
     }, []);
 
     const deleteFood = async (id) => {
-        await axios.delete(`http://localhost:5000/foods/delete/${id}`);
-        getFoods();
+        const confirmDelete = window.confirm("Are you sure you want to delete this food?");
+
+        if (!confirmDelete) return;
+
+        try {
+            await axios.delete(`http://localhost:5000/foods/delete/${id}`);
+            alert("Food deleted successfully");
+            getFoods();
+        } catch (err) {
+            console.error(err);
+            alert("Failed to delete food");
+        }
     };
 
     return (
@@ -35,11 +45,9 @@ function FoodList() {
                     <thead className="bg-blue-500 text-white">
 
                         <tr>
-
                             <th className="border p-3">Food Name</th>
                             <th className="border p-3">Owner</th>
                             <th className="border p-3">Action</th>
-
                         </tr>
 
                     </thead>
@@ -60,21 +68,22 @@ function FoodList() {
 
                                 <td className="border p-3 flex justify-center gap-2">
 
-    <button
-        onClick={() => navigate(`/food/update/${food._id}`)}
-        className="bg-yellow-400 hover:bg-yellow-500 text-white px-4 py-1 rounded-full"
-    >
-        Update
-    </button>
+                                    <button
+                                        onClick={() => navigate(`/food/update/${food._id}`)}
+                                        className="bg-yellow-400 hover:bg-yellow-500 text-white px-4 py-1 rounded-full"
+                                    >
+                                        Update
+                                    </button>
 
-    <button
-        onClick={() => deleteFood(food._id)}
-        className="bg-red-500 hover:bg-red-600 text-white px-4 py-1 rounded-full"
-    >
-        Delete
-    </button>
+                                    <button
+                                        onClick={() => deleteFood(food._id)}
+                                        className="bg-red-500 hover:bg-red-600 text-white px-4 py-1 rounded-full"
+                                    >
+                                        Delete
+                                    </button>
 
-</td>
+                                </td>
+
                             </tr>
 
                         ))}
