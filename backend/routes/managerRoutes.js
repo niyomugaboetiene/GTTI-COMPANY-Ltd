@@ -47,8 +47,12 @@ router.post('/login', async (req, res) => {
                 id: isUsernameExist._id,
                 username: isUsernameExist.username
             }
+
+            return res.status(200).json({ message: 'Login successfully', user: req.session.manager });
         }
-    }
-})
+    } catch (err) {
+            console.error(err);
+        }
+});
 
 module.exports = router;
