@@ -13,6 +13,9 @@ import UpdateExport from "./pages/UpdateExport";
 import UpdateFood from "./pages/UpdateFood";
 import Report from "./pages/Report";
 
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+
 function App() {
 
   return (
@@ -63,6 +66,9 @@ function App() {
           <Route path="/export-list" element={<ExportList />} />
           <Route path="/export/update/:id" element={<UpdateExport />} />
           <Route path="/food/update/:id" element={<UpdateFood />} />
+
+          <Route path="/login" element={<Login />}/>
+          <Route path="/register" element={<Register />}/>
 
         </Routes>
 

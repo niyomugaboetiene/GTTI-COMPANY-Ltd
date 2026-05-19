@@ -11,7 +11,7 @@ function Register() {
 
         try {
             await axios.post(
-                "http://localhost:5000/manager/login",
+                "http://localhost:5000/manager/register",
                 { userName, password }
             );
 
