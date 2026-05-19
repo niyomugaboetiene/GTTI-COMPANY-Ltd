@@ -35,7 +35,7 @@ function Register() {
             >
 
                 <h1 className="text-3xl font-bold text-blue-700 mb-6 text-center">
-                    Login Page
+                    Register Page
                 </h1>
 
                 <div className="mb-4">
@@ -67,7 +67,7 @@ function Register() {
                     type="submit"
                     className="bg-blue-500 w-full py-3 rounded-full text-white hover:bg-blue-600 transition-colors"
                 >
-                    Login
+                    Register
                 </button>
 
             </form>
