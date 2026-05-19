@@ -30,7 +30,7 @@ function AddImport() {
             "http://localhost:5000/exports/add", { foodId, exportDate, quantity }
         );
 
-        console.log(foodId, exportDate, quantity);
+        console.log("Result", foodId, exportDate, quantity);
         alert("Export Added");
         }  catch (err) {
             console.error(err);
