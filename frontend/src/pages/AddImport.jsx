@@ -27,7 +27,7 @@ function AddImport() {
        e.preventDefault();
         try {
         await axios.post(
-            "http://localhost:5000/exports/add", { foodId, exportDate, quantity }
+            "http://localhost:5000/export/add", { foodId, exportDate, quantity }
         );
 
         console.log("Result", foodId, exportDate, quantity);
