@@ -7,7 +7,11 @@ router.post("/add", async (req, res) => {
 
     try {
 //     foodId, exportDate,  quantity
-        const 
+        const { foodId, exportsData, quantity } = req.body;
+
+        if (!foodId || !exportsData || !quantity) {
+
+        }
 
     } catch (error) {
         res.json(error);
