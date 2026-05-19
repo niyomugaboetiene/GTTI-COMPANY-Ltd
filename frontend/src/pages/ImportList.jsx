@@ -14,16 +14,15 @@ function ImportList() {
         getImports();
     }, []);
 
-    // DELETE
-    const handleDelete = async (id) => {
-        try {
-            await axios.delete(`http://localhost:5000/import/${id}`);
-            alert("Deleted successfully");
-            getImports();
-        } catch (err) {
-            console.error(err);
-        }
-    };
+const handleDelete = async (id) => {
+    try {
+        await axios.delete(`http://localhost:5000/import/delete/${id}`);
+        alert("Deleted successfully");
+        getImports();
+    } catch (err) {
+        console.error(err);
+    }
+};
 
     return (
         <div className="bg-gray-100 min-h-screen flex justify-center items-start">
@@ -59,7 +58,6 @@ function ImportList() {
 
                                 <td className="border p-3 flex gap-2 justify-center">
 
-                                    {/* UPDATE */}
                                     <button
                                         className="bg-yellow-400 hover:bg-yellow-500 text-white px-3 py-1 rounded-full transition"
                                         onClick={() => alert("Update feature coming soon")}
@@ -67,7 +65,6 @@ function ImportList() {
                                         Update
                                     </button>
 
-                                    {/* DELETE */}
                                     <button
                                         className="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded-full transition"
                                         onClick={() => handleDelete(item._id)}
