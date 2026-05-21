@@ -2,13 +2,13 @@ import { Link } from "react-router-dom"
 const Footer = () => {
 
     return (
-        <div className="bg-blue-600 fixed bottom-0 left-0 right-0">
-            <div>
+        <div className="bg-blue-600 fixed bottom-0 left-0 right-0 p-2 h-fit">
+            <div className="flex justify-between">
                 <div>
                     <h1>GTTI</h1>
                     <p>GTII company ltd is company that sells foods </p>
                 </div>
-                <div>
+                <div className="grid space-y-3">
                     <h1>Navs</h1>
                     <Link>Foods</Link>
                     <Link>Import</Link>
@@ -16,7 +16,7 @@ const Footer = () => {
                     <Link>Report</Link>
                 </div>
 
-                <div>
+                <div className="">
                     <h1>Contact</h1>
                     <a href="">niyomugaboetiene53@gmail.com</a>
                     <p>+250 728 184 299</p>
