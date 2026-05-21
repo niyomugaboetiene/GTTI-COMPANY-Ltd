@@ -2,9 +2,9 @@ import { Link } from "react-router-dom"
 const Footer = () => {
 
     return (
-        <div className="bg-blue-600 fixed bottom-0 left-0 right-0 p-2 h-fit">
+        <div className="bg-blue-600 fixed bottom-0 left-0 right-0 p-2 h-fit text-white text-wrap">
             <div className="flex justify-between">
-                <div>
+                <div className="text-wrap">
                     <h1>GTTI</h1>
                     <p>GTII company ltd is company that sells foods </p>
                 </div>
