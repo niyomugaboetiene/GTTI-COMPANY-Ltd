@@ -83,10 +83,8 @@ function App() {
           <Route path="/login" element={<Login />}/>
           <Route path="/register" element={<Register />}/>
 
-          <Route path="/footer" element={<Footer /> }/>
-
         </Routes>
-
+<Footer />
       </div>
 
     </BrowserRouter>

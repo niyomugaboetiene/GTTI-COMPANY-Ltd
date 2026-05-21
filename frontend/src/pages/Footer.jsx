@@ -10,10 +10,10 @@ const Footer = () => {
                 </div>
                 <div className="grid space-y-3">
                     <h1 className="text-xl font-bold">Navs</h1>
-                    <Link className="hover:underline">Foods</Link>
-                    <Link className="hover:underline">Import</Link>
-                    <Link className="hover:underline">Export</Link>
-                    <Link className="hover:underline">Report</Link>
+                    <Link className="hover:underline" to={'/food-list'}>Foods</Link>
+                    <Link className="hover:underline" to={'/import-list'}>Import</Link>
+                    <Link className="hover:underline" to={'/export-list'}>Export</Link>
+                    <Link className="hover:underline" to={'/report'}>Report</Link>
                 </div>
 
                 <div className="p-2">
