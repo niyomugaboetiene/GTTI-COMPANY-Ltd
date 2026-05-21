@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Link, Router } from "react-router-dom";
 
 import AddFood from "./pages/AddFood";
 import FoodList from "./pages/FoodList";
@@ -15,6 +15,8 @@ import Report from "./pages/Report";
 
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+
+import Footer from "./pages/Footer";
 
 function App() {
 
@@ -80,6 +82,8 @@ function App() {
 
           <Route path="/login" element={<Login />}/>
           <Route path="/register" element={<Register />}/>
+
+          <Route path="/footer" element={<Footer /> }/>
 
         </Routes>
 

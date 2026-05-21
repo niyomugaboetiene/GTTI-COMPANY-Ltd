@@ -2,7 +2,7 @@ import { Link } from "react-router-dom"
 const Footer = () => {
 
     return (
-        <div>
+        <div className="bg-blue-600 fixed bottom-0 left-0 right-0">
             <div>
                 <div>
                     <h1>GTTI</h1>
@@ -25,3 +25,5 @@ const Footer = () => {
         </div>
     )
 }
+
+export default Footer;
