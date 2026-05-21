@@ -19,7 +19,7 @@ const Footer = () => {
                 <div>
                     <h1>Contact</h1>
                     <a href="">niyomugaboetiene53@gmail.com</a>
-                    <p></p>
+                    <p>+250 728 184 299</p>
                 </div>
             </div>
         </div>
