@@ -11,9 +11,9 @@ const Footer = () => {
                 <div className="grid space-y-3">
                     <h1 className="text-xl font-bold">Navs</h1>
                     <Link className="hover:underline">Foods</Link>
-                    <Link>Import</Link>
-                    <Link>Export</Link>
-                    <Link>Report</Link>
+                    <Link className="hover:underline">Import</Link>
+                    <Link className="hover:underline">Export</Link>
+                    <Link className="hover:underline">Report</Link>
                 </div>
 
                 <div className="">
