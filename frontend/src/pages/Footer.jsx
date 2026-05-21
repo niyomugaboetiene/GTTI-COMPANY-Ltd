@@ -19,7 +19,7 @@ const Footer = () => {
                 <div className="p-2">
                     <h1 className="mb-3">Contact</h1>
                     <a href="mailto:niyomugaboetiene53@gmail.com" className="hover:underline">niyomugaboetiene53@gmail.com</a>
-                    <p>+250 728 184 299</p>
+                    <p className="mt-4">+250 728 184 299</p>
                 </div>
             </div>
         </div>
