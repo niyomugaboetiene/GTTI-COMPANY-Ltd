@@ -74,6 +74,7 @@ router.get("/", isManager, async (req, res) => {
      return res.status(500).jsone({ message: 'Internal server error' });
    }
 });
+
 router.put("/update/:id", isManager, async (req, res) => {
     try {
         const { foodId, exportDate, quantity } = req.body;
