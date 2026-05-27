@@ -1,10 +1,12 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Report() {
     const [exportsData, setExportsData] = useState([]);
     const [imports, setImports] = useState([]);
     const [isAuth, setIsAuth] = useState(true);
+    const navigate = useNavigate();
 
     const getExports = async () => {
         try {
