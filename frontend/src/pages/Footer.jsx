@@ -9,7 +9,7 @@ const Footer = () => {
                     <p className="ms-5">GTII company ltd is company that sells foods </p>
                     <div className="flex mt-3 ms-5">
                         <input type="text" className="w-full border border-white py-2 rounded-lg" />
-                        <button className="bg-blue-800 px-3 rounded-lg hover:bg-blue-900 transition-colors focus:">subcribe</button>
+                        <button className="bg-blue-800 px-3 rounded-lg hover:bg-blue-900 transition-colors focus:outline-1 focus:outline-white">subcribe</button>
                     </div>
                 </div>
                 <div className="grid space-y-3">
